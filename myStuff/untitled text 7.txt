@@ -1,0 +1,74 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+struct Trie{
+    int count;
+    
+    Trie *child[256]; // assuming all the ASCII characters are supported in the dictionary.
+    
+    Trie(){
+        count = 0;
+        for(int i=0;i<256;i++)
+            child[i] = NULL;
+    }
+};
+
+int insert(Trie *T, string s){
+    Trie *temp = T;
+    
+    for(int i=0;i<s.length();i++){
+        if(temp->child[s[i]] == NULL){
+            temp->child[s[i]] = new Trie();
+        }    
+        temp = temp->child[s[i]];
+    }    
+    
+    return (++temp->count);
+}
+
+int solve(vector<string> dictionary){
+    
+    Trie *T = new Trie();
+    
+    int num_words_repeating_twice = 0;
+    
+    for(int i=0;i<dictionary.size();i++){
+        int val = insert(T, dictionary[i]);
+        if(val == 2)
+            num_words_repeating_twice++;
+        else if(val == 3)
+            num_words_repeating_twice--;
+    }
+    
+    return num_words_repeating_twice;
+}
+
+int main() {
+	int t;
+	cin>>t;
+	while(t--){
+	    int n;
+	    cin>>n;
+	    vector<string> dictionary;
+	    for(int i=0;i<n;i++){
+	        string s;
+	        cin>>s;
+	        dictionary.push_back(s);
+	    }
+	        
+	    cout<<solve(dictionary)<<endl;
+	}
+	return 0;
+}
+
+define visit(node n):
+  if n.colour == grey: //if we're still visiting this node or its descendants
+    throw exception("Cycle found")
+
+  n.colour = grey //to indicate this node is being visited
+  for node child in n.children():
+    if child.colour == white: //if the child is unexplored
+      visit(child)
+
+  n.colour = black //to show we're done visiting this node
+  return

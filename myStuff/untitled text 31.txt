@@ -1,0 +1,52 @@
+#Bill --- > bob --> susan --> jessica
+#           1st      2nd        1st
+           
+#Bill--> sandy --> allen --> joe
+
+
+#write a function where given n, return all of the friends within n degrees
+
+
+#for Bill, if n = 2, returns bob, susan, sandy, and allen
+
+class Person:
+    def __init__(self):
+        self.name = None
+        self.connectedTo = {} #a map
+        
+ 
+class GraphOfPeople:
+    def __init__(self):
+        self.graph = defaultdict(list)
+        
+        
+   def bfs(p):
+        #mark all the vertices not visited
+        visited = [False]*(len(self.graph))
+        
+        queue = [] # created a queue for BFS
+        queue.append(p)
+        
+        #check for visted
+        visited[p] = True
+        
+        while queue:
+            #deque a vertex from the queue
+            p = queue.pop(0)
+            print p #print all the vertex
+            
+            #get all the adjecent vertexes of p
+            #if adjeccnt is not visited check.
+            
+            for vert in self.graph[p]:
+                if visited[vert] != True:
+                    visited[vert] = True
+                    queue.append(p)
+                    
+                 
+             
+            
+        
+        
+Bill->Bob->Alice->Tom
+Bill->Mark->Jim->Joy

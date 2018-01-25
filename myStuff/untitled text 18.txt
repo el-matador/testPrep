@@ -1,0 +1,93 @@
+question about finding out the character that occurs most in a given string.  
+
+Questions about arrays and binary shift operations.  
+
+simple graph question ( topological sort).  
+
+Under NDA so can't explain much but it was more on data structure, OOP concepts, system design, quality, scalability, performance.  
+
+Add a node to sorted circular linked list:
+
+
+You have a string aaabbdcccccf, transform it the following way => a3b2d1c5f1 
+ie: aabbaa -> a2b2a2 not a4b2
+
+Threads, algos and ds, design problem, distributed systems
+
+RPT (Remote programming test) based on Component dependency. C1 -> C2 and C3, Remove Component.
+
+How to ensure locking in Singleton class  
+
+Do a producer consumer problem  
+
+Reach 2D Pt x to Pt y in spiral form -> right -> down -> left -> up moving 1 point at a time.  
+
+
+find all words which start from particular letter (case insensitive)
+
+- Remote Coding Test stage: implements components installer (implement the following methods: MakeDependency(component1, component2) // makes component1 dependent on component2
+Install(component1) // installs component1 and components it is dependent upon (if they're not installed already)
+Remove(component2) // removes component1 and components it is dependent upon if they're not used by other installed components.
+Note: component1 can be dependent on component2 and component3; and component4 can be dependent on component2
+
+- On-site interview: lots of technical questions like implement itoa, find kth largest in array, how to implement unit-tests, lots of behavioral questions.  
+
+
+
+-------------------------------------
+
+
+Fire Eye:
+Coding questions: String Compression problem, producer-consumer problem, readers-writers problem, check valid BST, improvise on the same problem with iterative tree traversal provided parent pointers in struct definition using O(1) extra space, implement strstr(), implement a simple regex matcher supporting '?' and '*' wildcards
+
+Other questions include OS and Networking basics, difference between TCP/UDP and when to use them, TCP flow and congestion control algorithm (how TCP reacts to a certain scenario), HTTP header contents, What is DNS and its response types, What happens when you enter a URL in web browser, mutexes and critical section, draw stack and contents of a given C program, how to efficiently serialize and deserialize a tree using a database table (basically asked me to draw the fields of the SQL table and describe the process)  
+
+Design an online Game  
+
+What is mysql injection how to prevent it ?  
+-------------
+
+For a English dictionary
+    - develop a fast server side api
+    - consume any string
+    - return a list of words in the dictionary that are permutations of the input string
+
+For example:
+    input: rta
+    output: tar art rat
+
+Given: 
+    - dictionary is there with api for O(1) look up
+    - finding all permutations from dictionary of input string to be developed
+    - Once we have list of permutations, look into dictionary and return only those are found
+
+
+    /*
+     * Complete the function below.
+     */
+    static int[] fibonacci(int n) {
+        int[] result = new int[n];
+        
+        if(n ==0) {
+            return new int[1];
+        }
+        
+        result[0] = 0;
+        if(n ==1) {
+            return result;
+        }
+        
+        result[1] = 1;
+       
+        if(n ==2) {
+            return result;
+        }
+        
+        for(int i =2; i<n ; i++) {
+            result[i] = result[i-1] + result[i-2];
+        }
+          
+        return result;
+    }
+
+
