@@ -191,6 +191,7 @@ g.BFS(0)
 
 
 
+#Clone the graph 
 
 class GraphNode:
   def __init__(self,value):
@@ -317,8 +318,8 @@ g.bfs(gNode1)
     
     
     
-    
-    from collections import defaultdict
+#find the longest path between two nodes  
+from collections import defaultdict
 
 class Graph:
   def __init__(self,v):

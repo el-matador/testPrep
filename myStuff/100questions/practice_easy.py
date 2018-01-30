@@ -241,27 +241,55 @@ def reverseNum(num):
 #print reverseNum(1234)
 
 def addNum(A,B):
-    sum =0
-    c =0
-    
-    size = min(len(A),len(B))
-    sumList=[0]*(size)
+    resSum =0
+    carry =0
 
-    for i in range(size-1,-1,-1):
-        sum = A[i]+B[i] +c 
-        sumList[i]=sum%10
-        c=sum/10
-
-    diff = abs(len(A)-len(B))
+    i = len(A)-1
+    j = len(B)-1
+    k = min(i,j)
+    result = [0]*(k+1)
     
-    if diff ==0:
-        if c>0:
-            sumList.insert(0,c)
-    else:
-        if len(A) > len(B):
-            if c>0:
-                
-    print sumList
+    while k>=0:
+      resSum = A[i] + B[j] +carry
+      carry = resSum/10
+      result[k] = resSum%10
+      k -=1
+      i -=1 
+      j -=1
+    
+    print i,j,k,carry
+    while i >=0:
+      if carry>0:
+        resSum = carry + A[i]
+        i -=1 
+        result.insert(0,resSum%10)
+        carry = resSum/10 
+        if carry>0:
+          result.insert(0,carry)
+        #print "here"
+      else:
+        result.insert(0,A[i])
+        i -=1 
+    
+    while j >=0:
+      if carry>0:
+        resSum = carry + B[j]
+        j -=1 
+        result.insert(0,resSum%10)
+        carry = resSum/10 
+        if carry>0:
+          result.insert(0,carry)
+      else:
+        result.insert(0,B[j])
+        j -=1 
+    
+   
+          
+    print result
+
+B =[9,9,3,2,3]
+A=[9,2,8,9]
+addNum(A,B)
     
     
 

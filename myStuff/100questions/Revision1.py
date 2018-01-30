@@ -9,6 +9,9 @@ https://www.geeksforgeeks.org/print-nodes-at-k-distance-from-root/
 
 https://www.geeksforgeeks.org/detect-cycle-undirected-graph/
 
+https://www.geeksforgeeks.org/kth-largest-element-in-bst-when-modification-to-bst-is-not-allowed/
+
+
 # Function to  print level order traversal of tree
 def printLevelOrder(root):
     h = height(root)
@@ -304,7 +307,7 @@ def minValue(node):
     while(current is not None):
         if current.left is None:
             break
-        current = current.next
+        current = current.left
  
     return current
 
@@ -379,7 +382,7 @@ def buildTree2(inOrder, postOrder, inStrt, inEnd):
     return tNode
     
 
-# function to get diameter of a binary tree
+# function to get diameter of a binary tree ******
 def diameter(tree):
     dia = 0
     def height_and_dia(tree):
@@ -438,7 +441,7 @@ def find_grants_cap(grantsArray, newBudget):
 A = [50,20,100,130,167]
 print find_grants_cap(A,400)
 
-
+# find the minimum candy
 def minCandy(A):
   n = len(A)
   
@@ -483,6 +486,7 @@ A = [0,1,0,2,1,0,1,3,2,1,2,1]
 
 print minCandy(A)
 
+#find the minimum element in a rotated sorted array
 
 def findMinSortedArray(A):
   n= len(A)
@@ -613,4 +617,79 @@ A = [5, 6, 7, 8, 9, 10, 1, 2, 3]
 k = 2
 print findElementSortedArray(A,3)
       
+#Question : Max Sum Contiguous Subarray . Find the contiguous subarray within an array (containing at least one number) which has the largest sum.
+def maxSubArray1(self, A):
+        arrayList = []
+  
+        maxSum = sum(A)
+        #print maxSum
+        n = len(A)
+  
+        for i in range(n):
+            arrayList.append(A[i])
+            tempSum = sum(arrayList)
+            
+            if tempSum > maxSum:
+                maxSum = tempSum
+                
+            if sum(arrayList) < 0:
+                arrayList = []
+        
+        return maxSum
+        
+                
+def maxSubArray(self, A):
+        maxsum = cursum = A[0]
+        for a in A[1:]:
+            cursum = max(cursum + a, a)
+            maxsum = max(cursum, maxsum)
+        return maxsum    
+        
+        
+#question : Rotated Sorted Array Search. find element in rotated array
+
+
+def search(A, B):
+        
+        n = len(A)
+        lh = 0
+        rh = n-1
+        
+        while lh <=rh:
+            
+            mid = lh + (rh-lh)/2
+            
+            if A[mid] == B:
+                return mid
+                
+            if A[mid]>A[lh]:
+                #this is the sorted part
+                if B< A[mid] and B>=A[lh]:
+                    rh = mid -1
+                else:
+                    lh = mid +1
+                
+            else:
+                if B <=A[rh] and B>A[mid]:
+                    lh = mid +1
+                    
+                else:
+                    rh = mid -1
+        return -1
+
+
+
+#Implement atoi function
+
+def atoi(self, s):
+        s = s.strip() # strips all spaces on left and right
+        if not s: return 0
+        sign = -1 if s[0] == '-' else 1
+        val, index = 0, 0
+        if s[0] in ['+', '-']: index = 1
+        while index < len(s) and s[index].isdigit():
+            val = val*10 + ord(s[index]) - ord('0') # assumes there're no invalid chars in given string
+            index += 1
+        #return sign*val
+        return max(-2**31, min(sign * val,2**31-1))
 
